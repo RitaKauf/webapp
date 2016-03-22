@@ -317,6 +317,28 @@ iframe{
     height:90%;
 }
 
+.form-row{
+    background-color: #B6B6B4;
+    padding:1rem;
+    margin-bottom:1rem;
+}
+
+.report-row-div{
+    display:inline-block;
+    width:40%;
+}
+
+.sites-form{
+    margin:3%;
+}
+
+.report-url{
+    width:90%;
+}
+
+.report-name{
+    width:90%;
+}
 
 /* ==========================================================================
    Helper classes

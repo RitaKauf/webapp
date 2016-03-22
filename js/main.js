@@ -1,11 +1,14 @@
 
 var views = ["#quick-reports", "#fmy-folders", "#my-team-folders", "#public-folders"];
+var formVisible = true;
 
 function OnPageLoad(){
 
     document.location.hash = '#quick-reports';
     UTILS.addEvent(window, "hashchange", ChangeTab);
     UTILS.addEvent(window, "keypress", ChangeTabKeypress);
+    UTILS.addEvent(document.querySelector(".open-close-form"), "click", OpenCloseForm);
+    
 
     //UTILS.ajax('data/config.json',{done: notificationUpdate});// doesn't work, chrome blocks Cross origin requests 
 
@@ -14,6 +17,17 @@ function OnPageLoad(){
 /*function notificationUpdate(){
 
 }*/
+
+function OpenCloseForm(){
+    if(formVisible){
+        Select(".sites-form").style.display = "none";
+        formVisible = false;
+    }
+    else {
+        Select(".sites-form").style.display = "block";
+        formVisible = true;
+    }
+}
 
 function ChangeTab(){
     document.querySelector(".chosen-tab").className = "tabs-lis";
