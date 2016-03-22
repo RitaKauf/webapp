@@ -138,7 +138,7 @@ header{
     font-size:110%;
     height:100%;
     background-color: black;
-    margin-right:3%;
+    margin-right:2%;
     
 }
 
@@ -200,16 +200,17 @@ header{
     list-style: none;
     margin-bottom:0;
     padding:0;
+    height:4rem;
 }
 
 .tabs-lis{
 
     display:inline-block;
-    width:21.5%;
+    width:21%;
     padding:0;
     margin:0;
     background-color:#686868 ;
-    height:4rem;
+    height:100%;
     margin-right:4.2%;
 
 }
@@ -233,6 +234,9 @@ header{
     margin:auto;
 }
 
+.tab-content{
+    height:55rem;
+}
 
 /* ==========================================================================
    Helper classes
