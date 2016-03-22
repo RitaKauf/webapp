@@ -235,22 +235,21 @@ header{
 }
 
 .tabs-lis a{
-    
+
     padding:2%;
     text-decoration: none;
     color:white;
 }
 
-.tabs-ul li:first-child{
-    background-color:#E5E4E2;
 
+.chosen-tab{
+    background-color:#E5E4E2;
 }
 
-.tabs-ul li:first-child a{
+.chosen-tab a{
     color:black;
 
 }
-
 
 .layout-wrap{
     max-width:900px;
