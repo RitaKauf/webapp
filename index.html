@@ -5,7 +5,7 @@
     <title>WebApp</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="fonts/style.css">
-     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
     <header>
@@ -15,84 +15,84 @@
         <form class="search-box" method="get" action="http://www.google.com">
             <input type="search" name="q" placeholder="search">
         </form>
-      </div>
-    </header>
+    </div>
+</header>
 
-    <section class="page-body layout-wrap">
-        <div class="notifications lightBackg">
+<section class="page-body layout-wrap">
+    <div class="notifications lightBackg">
         The data of UTF BI would be updated at 16:00 pm.
+    </div>
+
+    <nav class="navBarTop">
+        <div class="nav-section first-nav">
+            <p class="p-in-nav">Select<br/> Reporting Platform</p>
+
+            <div class="menu lightBackg">
+                <div class="menu-hint">
+                    <p class="p-in-menu-in-nav">Choose QS report</p>
+                    <div class="arrow"></div>
+                </div>
+
+                <ul class="action-list">
+                </ul>
+            </div>
         </div>
 
-        <nav class="navBarTop">
-            <div class="nav-section first-nav">
-                <p class="p-in-nav">Select<br/> Reporting Platform</p>
+        <div class="nav-section second-nav">
+            <p class="p-in-nav">Select <br/> Dashboard</p>
 
-                <div class="menu lightBackg">
-                    <div class="menu-hint">
-                        <p class="p-in-menu-in-nav">Choose QS report</p>
-                        <div class="arrow"></div>
-                    </div>
-
-                    <ul class="action-list">
-                    </ul>
+            <div class="menu lightBackg">
+                <div class="menu-hint">
+                    <p class="p-in-menu-in-nav">Choose dashboard</p>
+                    <div class="arrow"></div>
                 </div>
+
+                <ul class="action-list">
+                </ul>
             </div>
+        </div>
 
-            <div class="nav-section second-nav">
-                <p class="p-in-nav">Select <br/> Dashboard</p>
+        <div class="nav-section third-nav">
+            <p class="p-in-nav">Help &amp; <br/> Tutorials</p>
 
-                <div class="menu lightBackg">
-                    <div class="menu-hint">
-                        <p class="p-in-menu-in-nav">Choose dashboard</p>
-                        <div class="arrow"></div>
-                    </div>
-
-                    <ul class="action-list">
-                    </ul>
+            <div class="menu lightBackg">
+                <div class="menu-hint">
+                    <p class="p-in-menu-in-nav">Choose guide</p>
+                    <div class="arrow"></div>
                 </div>
+
+                <ul class="action-list">
+                </ul>
             </div>
+        </div>
+    </nav>
 
-            <div class="nav-section third-nav">
-                <p class="p-in-nav">Help &amp; <br/> Tutorials</p>
+    <section class="tabs">
+        <ul class="tabs-ul">
+            <li class="tabs-lis"><a href="#quick-reports">Quick Reports</a>
+            </li>
+            <li class="tabs-lis"><a href="#fmy-folders">My Folders</a>
+            </li>
+            <li class="tabs-lis"><a href="#my-team-folders">My Team Folders</a>
+            </li>
+            <li class="tabs-lis"><a href="#public-folders">Public Folders</a>
+            </li>
+        </ul>
 
-                <div class="menu lightBackg">
-                    <div class="menu-hint">
-                        <p class="p-in-menu-in-nav">Choose guide</p>
-                        <div class="arrow"></div>
-                    </div>
+        <div class="tab-content lightBackg" id="quick-reports">
+        </div>
 
-                    <ul class="action-list">
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="tab-content lightBackg" id="fmy-folders">
+        </div>
 
-        <section class="tabs">
-            <ul class="tabs-ul">
-                <li class="tabs-lis"><a href="#quick-reports">Quick Reports</a>
-                </li>
-                <li class="tabs-lis"><a href="#fmy-folders">My Folders</a>
-                </li>
-                <li class="tabs-lis"><a href="#my-team-folders">My Team Folders</a>
-                </li>
-                <li class="tabs-lis"><a href="#public-folders">Public Folders</a>
-                </li>
-            </ul>
+        <div  class="tab-content lightBackg" id="my-team-folders">
+        </div>
 
-            <div class="tab-content lightBackg" id="quick-reports">
-            </div>
-
-            <div class="tab-content lightBackg" id="fmy-folders">
-            </div>
-
-            <div  class="tab-content lightBackg" id="my-team-folders">
-            </div>
-
-            <div class="tab-content" id="public-folders">
-            </div>
-        </section>
+        <div class="tab-content" id="public-folders">
+        </div>
     </section>
-    
+</section>
+
 <script src="js/main.js"></script>
 <script src="js/plugins.js"></script>
 </body>
