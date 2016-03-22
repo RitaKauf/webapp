@@ -102,10 +102,13 @@ html{
 
 body{
     margin:0;
+    background-image: url("../Images/body-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .page-body{
-    padding:3%;
+    padding:2%;
     background-color: grey;
 }
 
@@ -124,21 +127,51 @@ header{
 }
 
 .notifications{
-    background-color: #E5E4E2;
     padding: 1rem;
 }
 
 .nav-section{
     display:inline-block;
-    width:33%;
+    width:31%;
     text-align:center;
     color:white;
     font-size:110%;
     height:100%;
+    background-color: black;
+    margin-right:3%;
+    
+}
+
+.nav-section:last-child{
+    margin-right:0;
+    }
+
+.first-nav{
+    background-image: url("../Images/action-report-new.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size:7rem 7rem;
+}
+
+.p-in-nav{
+    margin-bottom:4.8rem;
+}
+
+.p-in-menu-in-nav{
+    margin:0;
+    margin-left:3%;
+}
+
+.menu{
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    text-align:left;
+    width:100%;
+    font-size:small;
 }
 
 .navBarTop{
-    height:12rem;
+    height:11rem;
     margin-top:2%;
 }
 
@@ -147,6 +180,58 @@ header{
     list-style: none;
 }
 
+
+.lightBackg{
+    background-color: #E5E4E2;
+    color:black;
+}
+
+.menu-hint:after{
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top:10px solid black;
+    float: right;
+    content: "";
+    margin-bottom: 10rem;
+    margin-right:1em;
+}
+
+.tabs-ul{
+    list-style: none;
+    margin-bottom:0;
+    padding:0;
+}
+
+.tabs-lis{
+
+    display:inline-block;
+    width:21.5%;
+    padding:0;
+    margin:0;
+    background-color:#686868 ;
+    height:4rem;
+    margin-right:4.2%;
+
+}
+
+
+.tabs-lis:last-child{
+    margin-right:0;
+    }
+
+.tabs-lis a{
+    text-align: center;
+    padding:2%;
+    text-decoration: none;
+    color:white;
+    }
+
+
+
+.layout-wrap{
+    max-width:900px;
+    margin:auto;
+}
 
 
 /* ==========================================================================
