@@ -1,6 +1,6 @@
 
 var views = ["#quick-reports", "#fmy-folders", "#my-team-folders", "#public-folders"];
-var formVisible = true;
+var formVisible;
 
 var storageData ;
 
@@ -24,9 +24,20 @@ function OnPageLoad(){
 
 }*/
 
+
+/*initialization functions*/
+
 function SetData(){
     var rightTab = SetTab(storageData.lastTab);
     document.location.hash = rightTab;
+}
+
+function AddEventsOnStart(){
+    UTILS.addEvent(window, "hashchange", ChangeTab);
+    UTILS.addEvent(window, "keypress", ChangeTabKeypress);
+    UTILS.addEvent(Select(".open-close-form"), "click", OpenCloseForm);
+    UTILS.addEvent(Select(".cancel"), "click", CloseForm);
+    UTILS.addEvent(Select(".save"), "click", saveForm);
 }
 
 function SetTab(theRightTab){
@@ -43,14 +54,20 @@ function SetTab(theRightTab){
              localStorage.setItem("storageData", JSON.stringify(storageData));
          }
     }
+
+    if((theRightTab == views[0] || theRightTab == views[2] )){
+        formVisible = true;
+        Select(".sites-form").style.display = "block";
+    }
+    else
+        formVisible = false;
+
     return theRightTab;
 }
 
-function AddEventsOnStart(){
-    UTILS.addEvent(window, "hashchange", ChangeTab);
-    UTILS.addEvent(window, "keypress", ChangeTabKeypress);
-    UTILS.addEvent(document.querySelector(".open-close-form"), "click", OpenCloseForm);
-}
+
+/*Events related functions*/
+
 function OpenCloseForm(){
     if(formVisible){
         Select(".sites-form").style.display = "none";
@@ -62,6 +79,11 @@ function OpenCloseForm(){
     }
 }
 
+function CloseForm(){
+    Select(".sites-form").style.display = "none";
+    formVisible = false;
+}
+
 function ChangeTab(){
     var currentLoc = document.location.hash;
     SetTab(currentLoc);
@@ -71,6 +93,45 @@ function ChangeTab(){
     
 }
 
+function saveForm(){
+    if(ValidateForm())
+    {
+
+    }
+    
+}
+
+function ValidateForm(){
+    var valid = true;
+    if(Select("#report1name").value !='' && Select("#report1url").value ==''){
+        Select("#report1url").style.borderColor = "red";
+        valid =  false;
+    }
+    if(Select("#report1name").value =='' && Select("#report1url").value !=''){
+        Select("#report1name").style.borderColor = "red";
+        valid = false;
+    }
+
+    if(Select("#report2name").value !='' && Select("#report2url").value ==''){
+        Select("#report2url").style.borderColor = "red";
+        valid = false;
+    }
+    if(Select("#report2name").value =='' && Select("#report2url").value !=''){
+        Select("#report2name").style.borderColor = "red";
+        valid = false;
+    }
+
+    if(Select("#report3name").value !='' && Select("#report3url").value ==''){
+        Select("#report3url").style.borderColor = "red";
+        valid = false;
+    }
+    if(Select("#report3name").value =='' && Select("#report3url").value !=''){
+        Select("#report3name").style.borderColor = "red";
+        valid = false;
+    }
+         
+    return valid;
+}
 
 /*goes to the next navigation tab using the keyboard - space
 */
@@ -80,7 +141,7 @@ function ChangeTabKeypress(){
     var keyup;
     
     //space was pressed
-    if(event.keyCode ==32)
+    if(event.keyCode ==32){
         for(var i=0; i<views.length; i++)
         {
             if(currentLoc == views[i])
@@ -90,8 +151,11 @@ function ChangeTabKeypress(){
                     nextLoc = views[0];
         }
         document.location.hash = nextLoc;
+        }
 }
 
+
+/*functional aid function*/
 function Select(query){
     return document.querySelector(query);
 }

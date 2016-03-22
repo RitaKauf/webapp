@@ -331,6 +331,7 @@ iframe{
 .sites-form{
     padding:3%;
     background-color:white;
+    display:none;
 }
 
 .report-url{
@@ -347,6 +348,7 @@ iframe{
     background-color: transparent;
     border:0;
     padding:0.2rem 1rem 0.2rem 1rem;
+    cursor:pointer;
 }
 
 .save{
@@ -355,6 +357,7 @@ iframe{
     border:0;
     color:white;
     padding:0.2rem 1rem 0.2rem 1rem;
+    cursor:pointer;
 }
 
 /* ==========================================================================
