@@ -7,7 +7,13 @@ function OnPageLoad(){
     UTILS.addEvent(window, "hashchange", ChangeTab);
     UTILS.addEvent(window, "keypress", ChangeTabKeypress);
 
+    //UTILS.ajax('data/config.json',{done: notificationUpdate});// doesn't work, chrome blocks Cross origin requests 
+
 }
+
+/*function notificationUpdate(){
+
+}*/
 
 function ChangeTab(){
     document.querySelector(".chosen-tab").className = "tabs-lis";

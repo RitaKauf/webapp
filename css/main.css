@@ -258,6 +258,7 @@ header{
 
 .tab-content{
     height:50rem;
+    display:block;
 }
 
 
@@ -272,6 +273,50 @@ header{
 #public-folders{
     display:none;
 }
+
+.open-close-form{
+    background-image: url("../Images/settings.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100%;
+    width:1.8rem;
+    display:inline-block;
+    margin-left:4%;
+    background-color: white;
+    cursor:pointer;
+}
+
+.open-link-new-window{
+    background-image: url("../Images/expand.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100%;
+    width:1.8rem;
+    display:inline-block;
+    margin-left:85%;
+    cursor:pointer;
+}       
+
+#toolbar select{
+    display:inline-block;
+    height:100%;
+}
+
+#toolbar{
+    height:2rem;
+    padding-top:1rem;
+}
+
+#ifameDiv{
+    margin:auto;
+    height:52rem ;
+}
+
+iframe{
+    width:99%;
+    height:90%;
+}
+
 
 /* ==========================================================================
    Helper classes
