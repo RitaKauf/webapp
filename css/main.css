@@ -97,7 +97,7 @@ textarea {
 
 
 html{
-    font-size:70%;
+    font-size:90%;
 }
 
 body{
@@ -105,7 +105,8 @@ body{
 }
 
 .page-body{
-    margin:3%;
+    padding:3%;
+    background-color: grey;
 }
 
 header{
@@ -122,7 +123,29 @@ header{
     margin-right:2%;
 }
 
+.notifications{
+    background-color: #E5E4E2;
+    padding: 1rem;
+}
 
+.nav-section{
+    display:inline-block;
+    width:33%;
+    text-align:center;
+    color:white;
+    font-size:110%;
+    height:100%;
+}
+
+.navBarTop{
+    height:12rem;
+    margin-top:2%;
+}
+
+.action-list{
+    display:none;
+    list-style: none;
+}
 
 
 
