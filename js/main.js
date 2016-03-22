@@ -38,7 +38,7 @@ function ChangeTab(){
         if(currentLoc != views[i])
             Select(this.views[i]).style.display = "none";
         else
-             Select(this.views[i]).style.display = "inline-block";
+             Select(this.views[i]).style.display = "block";
     }
 
     //refocus on the navigation tab

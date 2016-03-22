@@ -329,15 +329,32 @@ iframe{
 }
 
 .sites-form{
-    margin:3%;
+    padding:3%;
+    background-color:white;
 }
 
 .report-url{
-    width:90%;
+    width:86%;
 }
 
 .report-name{
-    width:90%;
+    width:84%;
+}
+
+.cancel{
+    margin-left:77%;
+    display:inline-block;
+    background-color: transparent;
+    border:0;
+    padding:0.2rem 1rem 0.2rem 1rem;
+}
+
+.save{
+    display:inline-block;
+    background-color: black;
+    border:0;
+    color:white;
+    padding:0.2rem 1rem 0.2rem 1rem;
 }
 
 /* ==========================================================================
