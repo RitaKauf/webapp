@@ -220,7 +220,7 @@ function newIFrame (siteName)
 {
     var url;
     for(var i=0; i<storageData.reports.length; i++){
-        if(storageData.reports[i].name = siteName)
+        if(storageData.reports[i].name == siteName)
             url = storageData.reports[i].url;
     }
     Select("#quick-reports iframe").setAttribute('src',url);
