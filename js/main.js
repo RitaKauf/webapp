@@ -15,6 +15,7 @@ function OnPageLoad(){
         storageData = {"lastTab" : "#quick-reports", "reports":[{"name":"", "url":""}, {"name": "", "url":""}, {"name": "", "url":""}]};
 
     SetData();
+    Set
 
     //UTILS.ajax('data/config.json',{done: notificationUpdate});// doesn't work, chrome blocks Cross origin requests 
 
@@ -38,7 +39,10 @@ function AddEventsOnStart(){
     UTILS.addEvent(Select(".open-close-form"), "click", OpenCloseForm);
     UTILS.addEvent(Select(".cancel"), "click", CloseForm);
     UTILS.addEvent(Select(".save"), "click", saveForm);
+    UTILS.addEvent(Select(".open-link-new-window") ,"click",OpenInNewWindow);
 }
+
+
 
 function SetTab(theRightTab){
     document.querySelector(".chosen-tab").className = "tabs-lis";//cleaning the last chosen tab
@@ -49,20 +53,20 @@ function SetTab(theRightTab){
             Select(this.views[i]).style.display = "none";
         }
         else{
-             Select(this.views[i]).style.display = "block";
-             storageData.lastTab = views[i];
-             localStorage.setItem("storageData", JSON.stringify(storageData));
-         }
-    }
+           Select(this.views[i]).style.display = "block";
+           storageData.lastTab = views[i];
+           localStorage.setItem("storageData", JSON.stringify(storageData));
+       }
+   }
 
-    if((theRightTab == views[0] || theRightTab == views[2] )){
-        formVisible = true;
-        Select(".sites-form").style.display = "block";
-    }
-    else
-        formVisible = false;
+   if((theRightTab == views[0] || theRightTab == views[2] )){
+    formVisible = true;
+    Select(".sites-form").style.display = "block";
+}
+else
+    formVisible = false;
 
-    return theRightTab;
+return theRightTab;
 }
 
 
@@ -93,9 +97,30 @@ function ChangeTab(){
     
 }
 
-function saveForm(){
-    var last;
-    if(ValidateForm())
+/*goes to the next navigation tab using the keyboard - space
+*/
+function ChangeTabKeypress(){
+    var currentLoc = document.location.hash;
+    var nextLoc;
+    var keyup;
+    
+    //space was pressed
+    if(event.keyCode ==32){
+        for(var i=0; i<views.length; i++)
+        {
+            if(currentLoc == views[i])
+                if(i!=views.length-1)
+                    nextLoc = views[i+1];
+                else
+                    nextLoc = views[0];
+            }
+            document.location.hash = nextLoc;
+        }
+    }
+
+    function saveForm(){
+        var last;
+        if(ValidateForm())
     {//saving the reports
         if(Select("#report1name").value != ''){
             storageData.reports[0].name = Select("#report1name").value;
@@ -151,7 +176,7 @@ function ValidateForm(){
         Select("#report3name").style.borderColor = "red";
         valid = false;
     }
-         
+
     return valid;
 }
 
@@ -165,25 +190,10 @@ function newIFrame (siteName)
     Select("#quick-reports iframe").setAttribute('src',url);
 }
 
-/*goes to the next navigation tab using the keyboard - space
-*/
-function ChangeTabKeypress(){
-    var currentLoc = document.location.hash;
-    var nextLoc;
-    var keyup;
-    
-    //space was pressed
-    if(event.keyCode ==32){
-        for(var i=0; i<views.length; i++)
-        {
-            if(currentLoc == views[i])
-                if(i!=views.length-1)
-                    nextLoc = views[i+1];
-                else
-                    nextLoc = views[0];
-        }
-        document.location.hash = nextLoc;
-        }
+function OpenInNewWindow ()
+{
+    var urlOfFrame = Select("#quick-reports iframe").getAttribute('src');
+    window.open(urlOfFrame,'_blank');
 }
 
 
