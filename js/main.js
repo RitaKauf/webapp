@@ -15,7 +15,7 @@ function OnPageLoad(){
         storageData = {"lastTab" : "#quick-reports", "reports":[{"name":"", "url":""}, {"name": "", "url":""}, {"name": "", "url":""}]};
 
     SetData();
-    Set
+    SetReports();
 
     //UTILS.ajax('data/config.json',{done: notificationUpdate});// doesn't work, chrome blocks Cross origin requests 
 
@@ -27,6 +27,28 @@ function OnPageLoad(){
 
 
 /*initialization functions*/
+
+
+function SetReports(){
+    if(storageData.reports[0] != null && storageData.reports[0].name!= "")
+    {
+        Select("#report1name").value = storageData.reports[0].name;
+        Select("#report1url").value = storageData.reports[0].url;
+    }
+
+    if(storageData.reports[1] != null && storageData.reports[1].name!= "")
+    {
+        Select("#report2name").value = storageData.reports[1].name;
+        Select("#report2url").value = storageData.reports[1].url;
+    }
+
+    if(storageData.reports[2] != null && storageData.reports[2].name!= "")
+    {
+        Select("#report3name").value = storageData.reports[2].name;
+        Select("#report3url").value = storageData.reports[2].url;
+    }
+}
+
 
 function SetData(){
     var rightTab = SetTab(storageData.lastTab);
@@ -40,6 +62,7 @@ function AddEventsOnStart(){
     UTILS.addEvent(Select(".cancel"), "click", CloseForm);
     UTILS.addEvent(Select(".save"), "click", saveForm);
     UTILS.addEvent(Select(".open-link-new-window") ,"click",OpenInNewWindow);
+    UTILS.addEvent(Select("#toolbar1 select"), "change", changeFrame);
 }
 
 
@@ -122,21 +145,19 @@ function ChangeTabKeypress(){
         var last;
         if(ValidateForm())
     {//saving the reports
+        storageData.reports.length=0;//clearing the array
         if(Select("#report1name").value != ''){
-            storageData.reports[0].name = Select("#report1name").value;
-            storageData.reports[0].url = Select("#report1url").value;
+            storageData['reports'].push({"name":Select("#report1name").value,"url": Select("#report1url").value});
             last =0;
         }
 
         if(Select("#report2name").value != ''){
-            storageData.reports[1].name = Select("#report2name").value;
-            storageData.reports[1].url = Select("#report2url").value;
+            storageData['reports'].push({"name":Select("#report2name").value,"url": Select("#report2url").value});
             last =1;
         }
 
         if(Select("#report3name").value != ''){
-            storageData.reports[2].name = Select("#report3name").value;
-            storageData.reports[2].url = Select("#report3url").value;
+            storageData['reports'].push({"name":Select("#report3name").value,"url": Select("#report3url").value});
             last =2;
         }
 
@@ -144,7 +165,22 @@ function ChangeTabKeypress(){
         newIFrame(storageData.reports[last].name);
         CloseForm();
     }
+
+    FillDropDown();
     
+    
+}
+
+function FillDropDown(){
+    
+    var selectDropdown = Select("#toolbar1 select");
+    selectDropdown.innerHTML= "";
+    for(var i=0; i<storageData.reports.length; i++){
+        var Option = document.createElement("option");
+        Option.text = storageData.reports[i].name;
+        Option.value = storageData.reports[i].url;
+        selectDropdown.add(Option); 
+    }
     
 }
 
@@ -192,8 +228,15 @@ function newIFrame (siteName)
 
 function OpenInNewWindow ()
 {
-    var urlOfFrame = Select("#quick-reports iframe").getAttribute('src');
+    var urlOfFrame = Select(".chosen-div iframe").getAttribute('src');
     window.open(urlOfFrame,'_blank');
+}
+
+function changeFrame(){
+    
+    var select = Select("#toolbar1 select");
+    var url = select.options[select.selectedIndex].value;
+    Select("#quick-reports iframe").setAttribute('src',url);
 }
 
 

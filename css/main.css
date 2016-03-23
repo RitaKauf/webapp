@@ -293,16 +293,16 @@ header{
     height:100%;
     width:1.8rem;
     display:inline-block;
-    margin-left:85%;
+    margin-left:75%;
     cursor:pointer;
 }       
 
-#toolbar select{
+.toolbar select{
     display:inline-block;
     height:100%;
 }
 
-#toolbar{
+.toolbar{
     height:2rem;
     padding-top:1rem;
 }
