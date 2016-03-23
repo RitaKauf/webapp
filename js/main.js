@@ -12,7 +12,7 @@ function OnPageLoad(){
 
     storageData = JSON.parse(localStorage.getItem("storageData"));
     if(storageData==null)
-        storageData = {"lastTab" : "#quick-reports", "reports":[{"":""}]};
+        storageData = {"lastTab" : "#quick-reports", "reports":[{"name":"", "url":""}, {"name": "", "url":""}, {"name": "", "url":""}]};
 
     SetData();
 
@@ -94,10 +94,32 @@ function ChangeTab(){
 }
 
 function saveForm(){
+    var last;
     if(ValidateForm())
-    {
+    {//saving the reports
+        if(Select("#report1name").value != ''){
+            storageData.reports[0].name = Select("#report1name").value;
+            storageData.reports[0].url = Select("#report1url").value;
+            last =0;
+        }
 
+        if(Select("#report2name").value != ''){
+            storageData.reports[1].name = Select("#report2name").value;
+            storageData.reports[1].url = Select("#report2url").value;
+            last =1;
+        }
+
+        if(Select("#report3name").value != ''){
+            storageData.reports[2].name = Select("#report3name").value;
+            storageData.reports[2].url = Select("#report3url").value;
+            last =2;
+        }
+
+        localStorage.setItem("storageData", JSON.stringify(storageData));
+        newIFrame(storageData.reports[last].name);
+        CloseForm();
     }
+    
     
 }
 
@@ -131,6 +153,16 @@ function ValidateForm(){
     }
          
     return valid;
+}
+
+function newIFrame (siteName)
+{
+    var url;
+    for(var i=0; i<storageData.reports.length; i++){
+        if(storageData.reports[i].name = siteName)
+            url = storageData.reports[i].url;
+    }
+    Select("#quick-reports iframe").setAttribute('src',url);
 }
 
 /*goes to the next navigation tab using the keyboard - space
