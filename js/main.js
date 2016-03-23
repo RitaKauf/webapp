@@ -65,6 +65,7 @@ function AddEventsOnStart(){
     UTILS.addEvent(Select("#open-link1") ,"click",OpenInNewWindow1);
     UTILS.addEvent(Select("#open-link2") ,"click",OpenInNewWindow2);
     UTILS.addEvent(Select("#toolbar1 select"), "change", changeFrame);
+    UTILS.addEvent(Select(".search-box") , "submit", searchReport);
 }
 
 
@@ -141,6 +142,9 @@ function ChangeTabKeypress(){
             }
             document.location.hash = nextLoc;
         }
+        else
+            if(formVisible)
+                enterOrEsc();
     }
 
     function saveForm(){
@@ -251,6 +255,49 @@ function changeFrame(){
     Select("#quick-reports iframe").setAttribute('src',url);
 }
 
+function enterOrEsc(){
+    
+    //enter was pressed
+    if(event.keyCode ==13)
+
+        saveForm();
+    else//esc was pressed
+        if(event.keyCode == 27)
+            CloseForm();
+}
+
+
+function searchReport(){
+    var searchFor = Select(".search-box input").value;
+    allReports = storageData.reports;
+    var searchedForReport;
+    var found = false;
+
+    if (allReports.length==0)
+    {
+        var message = "The searched report "+searchFor+" was not found.";
+        Select(".notifications").innerText = message;
+    }
+
+    for (var i=0; i< allReports.length; i++){
+        if(allReports[i].name == searchFor){
+            searchedForReport = allReports[i];
+            found = true;
+        }
+    }
+
+    if (!found)
+    {
+        var message = "The searched report "+searchFor+" was not found.";
+        Select(".notifications").innerText = message;
+    } 
+    else 
+    {
+        SetTab(views[0]);
+        Select("#quick-reports iframe").setAttribute('src',searchedForReport.url);
+    }
+
+}
 
 /*functional aid function*/
 function Select(query){
