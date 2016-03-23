@@ -62,6 +62,8 @@ function AddEventsOnStart(){
     UTILS.addEvent(Select(".cancel"), "click", CloseForm);
     UTILS.addEvent(Select(".save"), "click", saveForm);
     UTILS.addEvent(Select(".open-link-new-window") ,"click",OpenInNewWindow);
+    UTILS.addEvent(Select("#open-link1") ,"click",OpenInNewWindow1);
+    UTILS.addEvent(Select("#open-link2") ,"click",OpenInNewWindow2);
     UTILS.addEvent(Select("#toolbar1 select"), "change", changeFrame);
 }
 
@@ -229,6 +231,16 @@ function newIFrame (siteName)
 function OpenInNewWindow ()
 {
     var urlOfFrame = Select(".chosen-div iframe").getAttribute('src');
+    window.open(urlOfFrame,'_blank');
+}
+
+function OpenInNewWindow1(){
+    var urlOfFrame = Select("#fmy-folders iframe").getAttribute('src');
+    window.open(urlOfFrame,'_blank');
+}
+
+function OpenInNewWindow2(){
+    var urlOfFrame = Select("#public-folders iframe").getAttribute('src');
     window.open(urlOfFrame,'_blank');
 }
 
